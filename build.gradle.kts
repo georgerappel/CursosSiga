@@ -13,7 +13,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0-RC")
-    implementation("org.jsoup:jsoup:1.10.3")
+    implementation("org.jsoup:jsoup:1.13.1")
 
     //Firebase
     implementation("com.google.api-client:google-api-client:1.30.2")

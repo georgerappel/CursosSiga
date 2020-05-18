@@ -3,7 +3,9 @@ import kotlin.system.measureTimeMillis
 fun main() {
     val time = measureTimeMillis {
         for(cours in Curso.listarCursos()) Curso(cours.key, cours.value)
-//        for( rawCourse in Curso.listarCursos()) ppRawCourse(rawCourse.key, rawCourse.value)
+            for( rawCourse in Curso.listarCursos())
+//                if(rawCourse.key.toLowerCase().contains("computa"))
+                    ppRawCourse(rawCourse.key, rawCourse.value)
     }
     println("Tempo total: $time")
 }

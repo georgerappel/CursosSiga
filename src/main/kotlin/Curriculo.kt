@@ -7,7 +7,7 @@ class Curriculo(val periodo: String, link: String){
 
     init { getData(link) }
 
-    private fun getData(link: String) = with(Jsoup.connect(link).get()){
+    private fun getData(link: String) = with(Jsoup.connect(link).sslSocketFactory(SSLHelperKotlin.socketFactory()).get()){
         Jsoup.connect(getElementById("frameDynamic").absUrl("src")).get().run {
 
             select("table.cellspacingTable").forEachIndexed { _, element ->

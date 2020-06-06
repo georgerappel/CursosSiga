@@ -1,11 +1,15 @@
+import model.Curso
+import parser.CursoParser
 import kotlin.system.measureTimeMillis
 
 fun main() {
     val time = measureTimeMillis {
-        for(cours in Curso.listarCursos()) Curso(cours.key, cours.value)
-            for( rawCourse in Curso.listarCursos())
-//                if(rawCourse.key.toLowerCase().contains("computa"))
+        for(cours in CursoParser.listarCursos()) Curso(cours.key, cours.value)
+            for( rawCourse in CursoParser.listarCursos())
+                if(rawCourse.key.toLowerCase().contains("computa"))
                     ppRawCourse(rawCourse.key, rawCourse.value)
+
+        Curriculo("1", "https://www.siga.ufrj.br/sira/repositorio-curriculo/FA9F18A7-92A4-F79B-1A98-293E97D8939B.html")
     }
     println("Tempo total: $time")
 }

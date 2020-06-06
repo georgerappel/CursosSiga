@@ -1,5 +1,7 @@
+import model.Materia
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
+import parser.MateriaParser
 
 class Curriculo(val periodo: String, link: String){
     private val equivalencias: MutableMap<String, MutableList<String>> = mutableMapOf()
@@ -19,8 +21,8 @@ class Curriculo(val periodo: String, link: String){
                 }
             }
 
-//            grade.forEach { println("${it.key}\n${it.value.joinToString(separator = "\n")}\n") }
-//            equivalencias.forEach { println("${it.key} = ${it.value}") }
+            grade.forEach { println("${it.key}\n${it.value.joinToString(separator = "\n")}\n") }
+            equivalencias.forEach { println("${it.key} = ${it.value}") }
         }
     }
 
@@ -43,7 +45,7 @@ class Curriculo(val periodo: String, link: String){
 
     private fun trataPeriodo(element: Element?) = element?.run {
         val periodo = select("tr.tableTitle").text()
-        val materias = select("[class*=tableBody]").mapNotNull { Materia.fromElement(it) }
+        val materias = select("[class*=tableBody]").mapNotNull { MateriaParser.fromElement(it) }
 
         grade[periodo] = materias
     }
